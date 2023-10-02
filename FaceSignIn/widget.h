@@ -11,7 +11,8 @@
 #include<QCameraImageCapture>
 #include<QCameraInfo>
 #include<QDebug>
-
+#include<QMessageBox>
+#include<QEventLoop>
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -28,7 +29,10 @@ public:
 private slots:
     void Move_To_Sign();
     void OpenCamera();
+    void CaptureCamera();
+    void On_Image_Captured(int a,QImage b);
 
+    void Back_To_Main();
 
 private:
     Ui::Widget * ui;
