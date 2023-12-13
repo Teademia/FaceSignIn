@@ -6,29 +6,27 @@
 #include<QNetworkAccessManager>
 #include<QNetworkReply>
 #include<QNetworkRequest>
-
 #include<QJsonDocument>
 #include<QJsonObject>
-
 #include<QDebug>
 #include<QBuffer>
 #include<QImage>
 #include<QMessageBox>
 #include<QJsonArray>
 #include<QEventLoop>
-
+#include"getaccesstoken.h"
 class QFaceSearchR : public QObject
 {
     Q_OBJECT
 public:
     explicit QFaceSearchR(QObject *parent = nullptr);
 
-    void SetImage(QImage);        //这个函数要吧传入的QImage写到这个类的ImageBase64里备用
-    void SetToken();        //这个是用来设置SetToken;
+    void SetImage(QImage);
 
 
     void SendRequest();
 private:
+    GetAccessToken TokenGet;
     QNetworkAccessManager * Manager;
     QNetworkReply * Reply;
     QNetworkRequest Request;
@@ -36,7 +34,7 @@ private:
     QJsonDocument JSDocToSend;
     QJsonObject jsob1;
 
-    const QString AcessToken="24.97aea7f047412ad8b7d1a6f5ce4e43a2.2592000.1698292037.282335-39923179";
+    QString AcessToken="24.c14aad029e8ad6d02cc7aa9b37232485.2592000.1705067871.282335-39923179";
     QString ImageBase64;
     QString StudenetName();
     QString group_id_list="Student";

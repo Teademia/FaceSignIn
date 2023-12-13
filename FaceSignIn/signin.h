@@ -26,6 +26,7 @@ public:
 signals:
     void OpenCamrea();
 
+
 private:
     Ui::SignIn *ui;
 

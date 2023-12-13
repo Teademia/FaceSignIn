@@ -96,6 +96,8 @@ void Widget::On_Image_Captured(int,QImage m_Image)
     a.setGeometry(0,0,500,600);
     a.setPixmap(QPixmap::fromImage(m_Image).scaled(500,600));
     a.show();
+    Search.SetImage(m_Image);
+    Search.SendRequest();
     QEventLoop e;
     connect(&Check,&QPushButton::clicked,&e,&QEventLoop::exit);
     e.exec();

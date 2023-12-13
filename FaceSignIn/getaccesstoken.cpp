@@ -39,6 +39,7 @@ void GetAccessToken::SendHttp()
     JSO=QJsonDocument::fromJson(JsonData).object();   
     AcessToken=JSO.value("access_token").toString();
     });
+    qDebug()<<AcessToken;
 
     qDebug()<<"Loop Begin";
     QEventLoop loop;

@@ -4,10 +4,12 @@ QFaceSearchR::QFaceSearchR(QObject *parent)
     : QObject{parent}
 {
 
+    AcessToken=TokenGet.GiveMeAccess();
 }
 
 void QFaceSearchR::SetImage(QImage Img)
 {
+    qDebug()<<"Image Setted";
     QByteArray byteArray;
     QBuffer buffer(&byteArray);
     buffer.open(QIODevice::WriteOnly);
@@ -15,8 +17,10 @@ void QFaceSearchR::SetImage(QImage Img)
     ImageBase64=QString::fromUtf8(byteArray.toBase64().data());
 }
 
+
 void QFaceSearchR::SendRequest()
 {
+    qDebug()<<"Send Image to Baidu";
     Manager=new QNetworkAccessManager();
     Request.setUrl(QUrl(tr("https://aip.baidubce.com/rest/2.0/face/v3/search?access_token=%1").arg(AcessToken)));
     Request.setHeader(QNetworkRequest::ContentTypeHeader, "Content-Type: application/json");
@@ -44,14 +48,6 @@ void QFaceSearchR::On_Ready_Read()
     qDebug()<<obj.value("face_token").toString()<<"    result success";
     QJsonArray ary=obj2.value("user_list").toArray();
     QString name=ary[0].toObject().value("user_id").toString();
-    if(name=="CGX")
-    {
-        name="陈冠希";
-    }
-    else if(name=="Hty")
-    {
-        name="侯天宇";
-    }
     QMessageBox Box;
     Box.setText(tr("Hello  %1,You have finished sign in").arg(name));
     Box.exec();

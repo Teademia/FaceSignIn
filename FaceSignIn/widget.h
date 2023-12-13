@@ -4,6 +4,8 @@
 #include <QWidget>
 #include"ui_signin.h"
 #include"ui_login.h"
+#include"sql.h"
+#include"qfacesearchr.h"
 #include<QFile>
 #include<QTextStream>
 #include<QCamera>
@@ -24,7 +26,7 @@ public:
 
     QWidget * NewSignInWidget;
     void set_style();
-
+    SQL * SQLManager;
 
 private slots:
     void Move_To_Sign();
@@ -38,7 +40,7 @@ private:
     Ui::Widget * ui;
     Ui::SignIn * NewSignInUI;
 
-
+    QFaceSearchR Search;
     QCamera * Camera;
     QCameraViewfinder * ViewFinder;
     QCameraImageCapture * Capture;
