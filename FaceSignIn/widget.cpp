@@ -13,9 +13,11 @@ Widget::Widget(QWidget *parent)
     NewSignInUI=new Ui::SignIn;
     NewSignInUI->setupUi(NewSignInWidget);
 
+    NewBoardWidget=new QMainWindow;
+    NewBoardUI=new Ui::Board;
+    NewBoardUI->setupUi(NewBoardWidget);
+
     CList=QCameraInfo::availableCameras();
-
-
     Camera=new QCamera(CList.at(0));
     Capture=new QCameraImageCapture(Camera);
     ViewFinder=new QCameraViewfinder;
@@ -24,6 +26,7 @@ Widget::Widget(QWidget *parent)
 
 
     connect(ui->btn_login,SIGNAL(clicked()),this,SLOT(Move_To_Sign()));
+    connect(NewSignInUI->Check,SIGNAL(clicked(bool)),this,SLOT(CheckStatus()));
     connect(NewSignInUI->Open,SIGNAL(clicked(bool)),this,SLOT(OpenCamera()));
     connect(NewSignInUI->Sign,&QPushButton::clicked,this,&Widget::CaptureCamera);
     connect(Capture,SIGNAL(imageCaptured(int,QImage)),this,SLOT(On_Image_Captured(int,QImage)));
@@ -107,6 +110,11 @@ void Widget::Back_To_Main()
 {
     NewSignInWidget->hide();
     this->show();
+}
+
+void Widget::CheckStatus()
+{
+    NewBoardWidget->show();
 }
 
 

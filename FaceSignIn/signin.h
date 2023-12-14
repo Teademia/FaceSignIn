@@ -25,6 +25,7 @@ public:
     ~SignIn();
 signals:
     void OpenCamrea();
+    void CheckStatus();
 
 
 private:

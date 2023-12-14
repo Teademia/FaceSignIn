@@ -2,8 +2,10 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include<QMainWindow>
 #include"ui_signin.h"
 #include"ui_login.h"
+#include"ui_board.h"4
 #include"sql.h"
 #include"qfacesearchr.h"
 #include<QFile>
@@ -25,6 +27,7 @@ public:
 
 
     QWidget * NewSignInWidget;
+    QMainWindow * NewBoardWidget;
     void set_style();
     SQL * SQLManager;
 
@@ -35,11 +38,12 @@ private slots:
     void On_Image_Captured(int a,QImage b);
 
     void Back_To_Main();
+    void CheckStatus();
 
 private:
     Ui::Widget * ui;
     Ui::SignIn * NewSignInUI;
-
+    Ui::Board * NewBoardUI;
     QFaceSearchR Search;
     QCamera * Camera;
     QCameraViewfinder * ViewFinder;

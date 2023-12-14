@@ -14,7 +14,7 @@ class Board : public QMainWindow
 public:
     explicit Board(QWidget *parent = nullptr);
     ~Board();
-
+signals:
 private:
     Ui::Board *ui;
 };

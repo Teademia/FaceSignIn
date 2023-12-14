@@ -7,6 +7,7 @@ SignIn::SignIn(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(this->ui->Open,&QPushButton::clicked,[=]{emit OpenCamrea();});
+    connect(this->ui->Check,&QPushButton::clicked,[=]{emit CheckStatus();});
 }
 
 SignIn::~SignIn()
